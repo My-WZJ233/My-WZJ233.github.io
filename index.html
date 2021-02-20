@@ -166,7 +166,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2021/02/18/%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">把自己的静态网站部署到GitHub</a>
+      <a class="article-title" href="/2021/02/18/%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/">使用GitHub托管自己的静态网站</a>
     </h1>
   
 
@@ -185,50 +185,10 @@
         <p>GitHub Pages是一个免费的静态网站托管服务，不需要准备服务器和域名，可以直接部署静态网站</p>
 <h2 id="所需工具"><a href="#所需工具" class="headerlink" title="所需工具"></a>所需工具</h2><p>Git、VS Code、浏览器</p>
 <h2 id="在GitHub新建一个仓库"><a href="#在GitHub新建一个仓库" class="headerlink" title="在GitHub新建一个仓库"></a>在GitHub新建一个仓库</h2><p>打开GitHub，点击右上角头像左边的 <code>+</code> 号，点击<code>New repository</code><br></p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step01.png" alt="New repository"></p>
-<p><code>Repository name</code>是仓库名称，<code>Description</code>是仓库描述</p>
-<p>信息填好后，点击绿色<code>Create repository</code>按钮</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step02.png" alt="填写信息"></p>
-<p>创建完成后会看到这个页面，里面有一些Git命令，引导你你怎样将本地的文件上传</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step03.png" alt="创建完成"></p>
-<h2 id="配置Git账户"><a href="#配置Git账户" class="headerlink" title="配置Git账户"></a>配置Git账户</h2><p>如果刚安装完Git，那么在上传之前需要配置一下Git账户，在本地生成用户名和邮箱，如果已经配置好可以略过此步</p>
-<pre class="line-numbers language-Git" data-language="Git"><code class="language-Git">$ ssh-keygen  #用于生成本地ssh公钥，运行完后一路回车即可
-$ git config --global user.name &quot;这里输入用户名&quot;  #Github的用户名
-$ git config --global user.email &quot;这里输入邮箱&quot;   #注册GitHub时的邮箱<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<h2 id="上传本地文件"><a href="#上传本地文件" class="headerlink" title="上传本地文件"></a>上传本地文件</h2><p>在VS Code中打开终端，点击上方终端→新终端，或者按<code>Ctrl+Shift+`</code></p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step04.png" alt="打开终端"></p>
-<p>在终端输入命令：</p>
-<pre class="line-numbers language-Git" data-language="Git"><code class="language-Git">$ git init    #初始化仓库<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step05.png" alt="初始化仓库"></p>
-<p>这时VS Code左侧的源代码管理功能会出现数字，就是本地未提交的文件</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step06.png" alt="提交文件"></p>
-<p>本地仓库创建好后，我们需要与之前在Github建立的仓库进行关联，刚才在GitHub建立仓库完成后的页面有一条命令：</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step07.png" alt="git remote add origin"></p>
-<p>直接复制这条命令在终端运行，如果仓库中看不到这些命令，那么复制下面这条命令，后边加上GitHub仓库的HTTPS地址（.git结尾的那个）</p>
-<pre class="line-numbers language-Git" data-language="Git"><code class="language-Git">$ git remote add origin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>之后就是输入提交信息并推送，命令方法如下：</p>
-<pre class="line-numbers language-Git" data-language="Git"><code class="language-Git">$ git add .    #添加现有文件
-$ git commit -m &quot;你想说的话&quot;  #创建提交注释信息
-$ git push -u origin main  #提交仓库到远程main分支<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>也可以使用图形化的VS Code的源代码管理功能进行推送，点击左侧源代码管理，在输入框中可以填写提交信息，相当于命令行的<code>git commit -m</code>，下方是待更改的文件</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step08.png" alt="点击源代码管理"></p>
-<p>输入完提交信息后，点击<code>✔</code>，在弹出的框选是<br><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step09.png" alt="选择“是”"></p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step10.png" alt="提交到本地"></p>
-<p>这时之前待更改的文件都消失了，如果还要修改一些里面的文件，修改后的文件还会在这里显示，现在只是在本地仓库提交，我们需要推送到远程，点击三个点<code>...</code>的按钮，里面有一个推送的选项，点击推送</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step11.png" alt="点击推送"></p>
-<p>点击推送后，第一次会弹出选项框，提示master没有上游分支，点击确定</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step12.png" alt="点击确定"></p>
-<p>点击确定后如果是第一次使用会弹出网页进行授权，按提示操作即可</p>
-<p>再去刷新刚才的GitHub页面，可以看到刚才的文件已经提交上去了</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step13.png" alt="提交成功"></p>
-<h2 id="设置GitHub-Pages"><a href="#设置GitHub-Pages" class="headerlink" title="设置GitHub Pages"></a>设置GitHub Pages</h2><p>点击Settings，向下滑，找到Github Pages</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step14.png" alt="找到Github Pages"></p>
-<p>将Source的None选项改为master</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step15.png" alt="将Source的None选项改为master"></p>
-<p>这时网页会自动刷新，上方会出现一个链接</p>
-<p><img src="./%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step16.png" alt="查看上方的链接"></p>
-<p>点击链接，网页就可以通过GitHub访问了</p>
-
+<p><img src="/2021/02/18/%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/step01.png" alt="New repository"></p>
+        
+          <a class="article-more-a" href="/2021/02/18/%E4%BD%BF%E7%94%A8GitHub%E6%89%98%E7%AE%A1%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99/#more">more >></a>
+        
       
 
       
